@@ -36,7 +36,7 @@ func testSparse() {
 func main() {
 	var root tree.Node
 
-	root = tree.Node{Value: 3}
+		root = tree.Node{Value: 3}
 	root.Left = &tree.Node{}
 	root.Left.Right = tree.CreateNode(2)
 	root.Right = &tree.Node{5, nil, nil}
@@ -45,6 +45,12 @@ func main() {
 
 	fmt.Println(root)
 	root.Traverse()
+
+	nodeCount := 0
+	root.TraverseFunc(func(node *tree.Node) {
+		nodeCount++
+	})
+	fmt.Println(nodeCount)
 
 	myNode := myTreeNode{&root}
 	myNode.postOrder()
